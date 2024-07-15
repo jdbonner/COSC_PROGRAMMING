@@ -1,1 +1,34 @@
-Day 1 of COSC notes
+Day 1 
+
+Python - intro
+
+
+vim $HOME/.vimrc  # Enables Color Coding for Code
+syntatx enable  # Sets starting tabs to 4 spaces
+set tabstop=4  # 
+set shiftwidth=4
+set expandtab
+set number
+filetype indent on
+set autoindent
+
+nano $HOME/.nanorc
+set tabsize 4
+set tabstospaces
+set linenumbers
+
+
+
+
+data types
+strings
+floats
+bools
+
+test the type with type() function
+typecasting
+
+variable declaration
+variable = datatype
+
+
