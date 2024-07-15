@@ -1,6 +1,13 @@
 setup information
-linux workstation 10.50.30.229
-ssh username@10.50.30.229 -X
-run terminator
+  Useful links
+    Setup information:
+      cctc.cybbh.io/students/students/latest/Day_0_setup.html
+    Python information:
+      https://git.cybbh.space/programming/python/public
 
-windows workstation 10.50.40.8
+  machines:
+    linux workstation 10.50.30.229
+      ssh username@10.50.30.229 -X
+      run terminator
+  
+    windows workstation 10.50.40.8
