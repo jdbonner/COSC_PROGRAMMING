@@ -77,17 +77,17 @@ variable.append(value) #use to append to a list.
 /////////////////////////////EXERCISE 1////////////////////////////
 #using split and join
 '''
-1 #Activity - Split an email address
-2 
-3 email = 'name@domain.com'      #value to split
-4 ['name', 'domain', 'com']      #example of how output should appear
-5 
-6 email1 = email.split('@')      #splitting the string value by the @ symbol.
-7 email2 = '.'.join(email1)      #rejoining the string value with a . symbol in order to complete the split with the .com
-8 email3 = email2.split('.')     #splits by the . in the string forming 3 seperated values in the desired output format
-9 print(email1)                  #prints the first split which is for testing purposes
-10 print(email2)                 #prints the value of joinging the list back together for testing
-11 print(email3)                 #prints the completed splitting of the code for display purposes
+#Activity - Split an email address
+
+email = 'name@domain.com'      #value to split
+['name', 'domain', 'com']      #example of how output should appear
+
+email1 = email.split('@')      #splitting the string value by the @ symbol.
+email2 = '.'.join(email1)      #rejoining the string value with a . symbol in order to complete the split with the .com
+email3 = email2.split('.')     #splits by the . in the string forming 3 seperated values in the desired output format
+print(email1)                  #prints the first split which is for testing purposes
+print(email2)                 #prints the value of joinging the list back together for testing
+print(email3)                 #prints the completed splitting of the code for display purposes
 '''
 #using format
 '''
@@ -97,7 +97,7 @@ print('[{}],'.format(email.split('@')[0]))
 '''
 #using append
 '''
-blank = []
+blank = []                  #declares a variable named blank 
 email = 'name@domain.com'
 email2 = email.split('@')
 email3 = email.split('.')
@@ -111,7 +111,59 @@ print(blank)
 '''
 //////////////////////////////END///////////////////////////////////
 
+Flow control
+#use \n to escape and make a new line
+input()
+#default value is a string. declaire a different data type if you want it to be an int or float.
 
+if <condition>:
+  <indented code block>
+elif <condition>:
+  <indented code block>
+elif <condition>:
+  <indented code block>
+else:
+  <indented code block>
+
+#example
+num = int(input('Type a number:\n'))
+if num ==7:
+  print('This is True')
+elif num < 7:
+  print('num ' + str(num) + ' is < 7'
+elif num > 7 and num < 20:
+  print(str(num) + ' is between 7 and 20')
+else:
+  print('This is else')
+
+/////////////////////////////////////////EXERCISE 2///////////////////////////////////////
+FizzBuzz is an interview question that is said to filter out 99.5% of programming job candidates.
+Modify deliverable.py so that it takes a number from the user and prints it (the number) if it isn’t divisible by 3 or 5. 
+For multiples of 3 print 'fizz' instead. For multiples of 5 print 'buzz' instead.
+For multiples of 3 and 5 print 'fizzbuzz'.
+
+
+#solution 1
+'''
+#!/usr/bin/env python3
+
+num = int(input('Please input a number: '))
+if num % 3 == 0 and num % 5 == 0:
+  print('fizzbuzz')
+elif num % 3 == 0:
+  print('fizz')
+elif num % 5 == 0:
+  print('buzz')
+else:
+    print(num)
+'''
+
+
+
+
+
+
+//////////////////////////////////////END of exercise 2////////////////////////////////////
 
 
 
