@@ -147,15 +147,15 @@ For multiples of 3 and 5 print 'fizzbuzz'.
 '''
 #!/usr/bin/env python3
 
-num = int(input('Please input a number: '))
-if num % 3 == 0 and num % 5 == 0:
-  print('fizzbuzz')
-elif num % 3 == 0:
-  print('fizz')
-elif num % 5 == 0:
-  print('buzz')
-else:
-    print(num)
+num = int(input('Please input a number: '))    #declaired the variable and takes the input from the user while only allowing integers
+if num % 3 == 0 and num % 5 == 0:              #first part of the if statement checking for both conditions to be divisible
+  print('fizzbuzz')                            #prints fizzbuzz
+elif num % 3 == 0:                             #elif checking if divisible by 3
+  print('fizz')                                #prints fizz
+elif num % 5 == 0:                             #elif checking if divisible by 5
+  print('buzz')                                #prints buzz
+else:                                          #else to catch non divisible.
+    print(num)                                 #prints the number that was input
 '''
 
 
