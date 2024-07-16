@@ -32,3 +32,62 @@ variable declaration
 variable = datatype
 
 
+day 2
+
+bool typecasting examples
+bool('0') = true
+bool(1) = true
+bool() = 
+
+
+split and join
+word = ''
+type(word)
+output:class 'str'
+
+lists and tuples
+
+#elements are stored inside
+tuple() #are immutable uses () to display
+list() #are mutable uses [] to display
+
+using join
+variable = ''.join(variable)
+#use del to remove letters
+del variable[-2] #deletes element of the list
+
+using split
+variable.split(':') #selector can be whatever is in the string as long as proper datatype. by default it splits by spaces.
+
+.format
+#example
+'{}'.format(variable[0])
+print('{} will bear the ring'.format(variable[0]))
+#escape characters is backslash /
+#example2
+'{} and {} beared the ring'.format(fellowship[0], fellowship[1])
+'{element0} and {element1} beared the ring'.format(variablelist[
+
+.append
+#example
+variable.append(value) #use to append to a list.
+
+
+/////////////////////////EXERCISE 1///////////////////////////
+'''
+1 #Activity - Split an email address
+2 
+3 email = 'name@domain.com'      #value to split
+4 ['name', 'domain', 'com']      #example of how output should appear
+5 
+6 email1 = email.split('@')      #splitting the string value by the @ symbol.
+7 email2 = '.'.join(email1)      #rejoining the string value with a . symbol in order to complete the split with the .com
+8 email3 = email2.split('.')     #splits by the . in the string forming 3 seperated values in the desired output format
+9 print(email1)                  #prints the first split which is for testing purposes
+10 print(email2)                 #prints the value of joinging the list back together for testing
+11 print(email3)                 #prints the completed splitting of the code for display purposes
+'''
+//////////////////////////END///////////////////////////
+
+
+
