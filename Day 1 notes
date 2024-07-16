@@ -72,8 +72,10 @@ print('{} will bear the ring'.format(variable[0]))
 #example
 variable.append(value) #use to append to a list.
 
-
+'''#multi line comment
+'''
 /////////////////////////////EXERCISE 1////////////////////////////
+#using split and join
 '''
 1 #Activity - Split an email address
 2 
@@ -87,7 +89,37 @@ variable.append(value) #use to append to a list.
 10 print(email2)                 #prints the value of joinging the list back together for testing
 11 print(email3)                 #prints the completed splitting of the code for display purposes
 '''
+#using format
+'''
+email = 'name@domain.com'
+print(email.split('@'))
+print('[{}],'.format(email.split('@')[0]))
+'''
+#using append
+'''
+blank = []
+email = 'name@domain.com'
+email2 = email.split('@')
+email3 = email.split('.')
+
+print(email2[1].split('.'))
+print(email2)
+blank.append(email2[0])
+blank.append(email2[1].split('.')[0])
+blank.append(email2[1].split('.')[1])
+print(blank)
+'''
 //////////////////////////////END///////////////////////////////////
 
 
+
+
+
+
 ////////////////////////////////////////END of day 2////////////////////////////////////////////////////
+
+
+
+
+
+
