@@ -390,6 +390,18 @@ with open('school_prompt.txt','r') as fileref:
     words = fileref.read().split()
     p_words = [word for word in words if 'p' in word]
 
+#how the instructor solved it
+p_words = []
+with open('school_prompt.txt') as fp:
+  for line in fp:
+    for word in line.split():
+      for char in word:
+        if char == 'p':
+          p_words.append(word)
+          break
+
+
+
 ////////////////////////END of Exercise 4///////////////////////////////
 
 
