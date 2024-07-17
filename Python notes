@@ -328,6 +328,11 @@ for part, page in book.items():
 for i in <dictionary>:
   print('{} = {}'.format(i,dictionary[i]))
 
+inventory {'item': value, 'item':value, 'item': value}
+order (['wheels', 5], ['MVP', 2])
+
+for i in order:
+  total += inventory[i[0]] * i[1]
 
 
 #removing from a dictionary
