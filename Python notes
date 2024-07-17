@@ -340,7 +340,57 @@ del book["Title"]
 book.pop("Title")
 
 
+#################Opening and closing files##################
+ensure you close each file each time you open it.
+fp = open("documentname.txt")
+fp.close()
+.open
+.write
+.writelines
+.read
+.readline
+.readlines
 
+!!!!!!!!!!!!how they want us to do it!!!!!!!!!!!!!!!!
+with open("test.txt", 'w') as fp:
+  fp.write('First line/n')
+
+lines = [list]
+fp.writelines(lines)
+
+example
+file = 'test.txt'
+with open(file) as outfile:
+  outfile.read()
+
+
+/////////////////////////EXERCISE 4//////////////////////////////////////
+#first challenge 
+# 5. Challenge: Using the file school_prompt.txt, assign the third word of every line to a list called three.
+
+three = []
+
+with open('school_prompt.txt', 'r') as f:
+    three = [line.split()[2] for line in f]
+    print(three)
+
+#second challenge
+#Challenge: Create a list called emotions that contains the first word of every line in emotion_words.txt.
+with open('emotion_words.txt','r') as fileref:
+    line = fileref.readlines()
+    emotions = []
+    for words in line:
+        word = words.split()
+        emotions.append(word[0])
+print (emotions)
+
+#third challenge
+#Challenge: Using the file school_prompt.txt, if the character ‘p’ is in a word, then add the word to a list called p_words.
+with open('school_prompt.txt','r') as fileref:
+    words = fileref.read().split()
+    p_words = [word for word in words if 'p' in word]
+
+////////////////////////END of Exercise 4///////////////////////////////
 
 
 ////////////////////////////////////////////////END of day 3////////////////////////////////////////////////////////
