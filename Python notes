@@ -403,6 +403,18 @@ with open('school_prompt.txt') as fp:
 
 
 ////////////////////////END of Exercise 4///////////////////////////////
+#args-kwargs
+https://www.geeksforgeeks.org/args-kwargs-python/
+args has one *
+kwargs has two **
+args is a tuple
+kwargs is a dictionary
+
+def total(*args):
+  print(args)
+
+
+
 
 
 ////////////////////////////////////////////////END of day 3////////////////////////////////////////////////////////
