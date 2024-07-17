@@ -224,7 +224,90 @@ test()
 #.upper and .lower used to change all lower case and all lower case.
 
 ////////////////////////////////////////END of day 2////////////////////////////////////////////////////
+/////////////////////////////////////DAY 3///////////////////////////////////////////////////
+//////////////////////////////////////Exercise 3////////////////////////////////////////
+Modify deliverable.py and implement guess_number so that it repeatedly asks the user for a number between 0 and 100 inclusive. 
+If the user correctly guesses the value of the given argument n, print "WIN" and exit out of the loop. Otherwise indicate whether the guess was "too high" or "too low". 
+Test the deliverable manually or run python3 check.py to run the supplied unit tests.
 
+#solution
+'''
+#!/usr/bin/env python3 
+def guess_number(n):
+  control = True
+  while control == True:
+    print('Guess a number between 0 and 100')
+    number = int(input('number: '))
+    if number == n:
+      print('WIN')
+      control = False
+      break
+    elif number > n:
+      print('too high')
+    elif number < n:
+      print('too low')
+    else:
+      print('something aint right')
+
+guess_number(23)
+'''
+/////////////////////////////////////END of Exercise 3///////////////////////////////////
+#range
+range()
+#can be typecasted into a list. as a list it will display all the numbers counting up to that number
+#range can also be typecasted to use start, stop, step.
+#example1
+list(range(5,10,1))
+#output: [5,6,7,8,9]
+list(range(start,stop,step))
+#cam be counted backwards
+
+#example2
+nums = list(range(1,6))
+for i in nums:
+print(i)
+
+
+#len
+len()
+#shows you the length of a list
+
+#example1
+def average(nums):
+  print(sum(nums)/len(nums))
+
+average([0,1,2,3,4,])
+
+#slice
+numbers = [0,1,1,2,3,5,8,13]
+numbers[0]
+0
+numbers[0:2]
+[0, 1]
+numbers[2:4]
+[1, 2]
+numbers[:-1]
+[0, 1, 1, 2, 3, 5, 8]
+numbers[::-1]
+[13, 8, 5, 3, 2, 1, 1, 0]
+
+#ord
+ord('a')
+#shows the ascii of a specific value.
+
+#chr
+chr(97)
+#shows the letter designation for ascii value
+
+#example
+alphabet = []
+for i in range(97,123):
+alphabet.append(chr(i))
+
+alphabet
+
+
+////////////////////////////////////////////////END of day 3////////////////////////////////////////////////////////
 
 
 
