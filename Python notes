@@ -252,7 +252,7 @@ def guess_number(n):
 guess_number(23)
 '''
 /////////////////////////////////////END of Exercise 3///////////////////////////////////
-#range
+#rangecontrol
 range()
 #can be typecasted into a list. as a list it will display all the numbers counting up to that number
 #range can also be typecasted to use start, stop, step.
@@ -278,7 +278,7 @@ def average(nums):
 
 average([0,1,2,3,4,])
 
-#slice
+###############slice################
 numbers = [0,1,1,2,3,5,8,13]
 numbers[0]
 0
@@ -291,11 +291,11 @@ numbers[:-1]
 numbers[::-1]
 [13, 8, 5, 3, 2, 1, 1, 0]
 
-#ord
+##################ord#############
 ord('a')
 #shows the ascii of a specific value.
 
-#chr
+###################chr######################
 chr(97)
 #shows the letter designation for ascii value
 
@@ -305,6 +305,37 @@ for i in range(97,123):
 alphabet.append(chr(i))
 
 alphabet
+
+#dictionary
+variable = {}
+
+#example
+book = {
+    "Title" : "Cover",
+    "Introduction" : "Page 2",
+    "Chapter 1" : "Page 5"
+}
+#adding to a dictionary
+book = {}
+book["Title"] = "Cover"
+book["Introduction"] = "Page 2"
+book["Chapter 1"] = "Page 5"
+
+#iterating through dictionaries
+for part, page in book.items():
+    print("{} is found on {}".format(part, page))
+
+for i in <dictionary>:
+  print('{} = {}'.format(i,dictionary[i]))
+
+
+
+#removing from a dictionary
+del book["Title"]
+book.pop("Title")
+
+
+
 
 
 ////////////////////////////////////////////////END of day 3////////////////////////////////////////////////////////
