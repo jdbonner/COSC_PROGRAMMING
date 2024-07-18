@@ -3,6 +3,26 @@ if a question ask to return a list then you need to declare a list
 printing all the variables that you get will show what the test is using as input 
 and could be helpful to know what data types and values you are working with.
 remember that only worry about args being a tuple.
+
+if you get a ip you can split by the . and verify that the octect is valid
+#example
+def q1(ip):
+  oct1 = False
+  oct2 = False
+  oct3 = False
+  oct4 = False
+  for i in ip.split('.'):
+    if int(i) < 0 or int(i) > 255:
+      return False
+    else:
+      oct1 = True
+
+
+
+q1('5.800.99.100')
+
+
+
 !!!!!!!!!!!!!!!!!!!!!!CORRECT!!!!!!!!!!!!!!!!!!!!!!!
 //////////////////////////question 1//////////////////////////
 
