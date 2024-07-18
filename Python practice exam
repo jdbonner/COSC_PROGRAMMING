@@ -23,6 +23,22 @@ q1('5.800.99.100')
 
 
 
+
+
+###numeric
+evaluates a string and returns a boolean
+'a'.isnumeric()
+str(var).isnumeric()
+
+
+
+
+
+
+
+
+
+
 !!!!!!!!!!!!!!!!!!!!!!CORRECT!!!!!!!!!!!!!!!!!!!!!!!
 //////////////////////////question 1//////////////////////////
 
