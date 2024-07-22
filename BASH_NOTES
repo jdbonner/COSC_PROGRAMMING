@@ -138,7 +138,7 @@ cut -d: -f1 -s
 ~     #bitwise complement
 
 
-################################CHALLENGES###################################
+################################CHALLENGES1###################################
 #1
 Brace expansion is a mechanism by which arbitrary strings may be generated, for commands that will take multiple arguements. For the below examples, the first example is equivalent to the second command.
 
@@ -199,8 +199,40 @@ While this activity can be accomplished with only find, it can also be combined 
 #answer
 find -name \*.txt | grep -v ~.txt
 ################################END OF CHALLENGES###################################
+################################CHALLENGES2###################################
+#1
+Copy all files in the $HOME/1123 directory, that end in ".txt", and omit files containing a tilde "~" character, to directory $HOME/CUT.
 
+Use only the find and cp commands. You will need to utilize the -exec option on find to accomplish this activity.
 
+The find command uses BOOLEAN "!" to designate that it does not want to find any files or directories that follows.
+#answer
+find $HOME/1123 -name *.txt ! -name *~* -exec cp {} $HOME/CUT \;
+#2
+Using ONLY the find command, find all empty files/directories in directory /var and print out ONLY the filename (not absolute path), and the inode number, separated by newlines.
+
+Tip: When using the man pages, it is better to focus your search then to visually scan 1000+ lines of text. Combining the output with the grep command, possibly with its -A, -B, or -C options, can help drive context driven searches of those manual pages.
+
+Example Output
+
+123 file1
+456 file2
+789 file3
+#answer
+find /var -empty -printf "%i %f\n"
+#3
+Using ONLY the find command, find all files on the system with inode 4026532575 and print only the filename to the screen, not the absolute path to the file, separating each filename with a newline. Ensure unneeded output is not visible.
+
+Tip: The above inode is specific to this CTFd question and might not be in use on your Linux Opstation. Instead, you can test your command on your Linux OpStation against inode 999.
+#answer
+find / -type f -inum 4026532575 -printf "%f\n"
+#4
+Using only the ls -l and cut Commands, write a BASH script that shows all filenames with extensions ie: 1.txt, etc., but no directories, in $HOME/CUT.
+Write those to a text file called names in $HOME/CUT directory.
+Omit the names filename from your output.
+NOTE: The output should only be the file names with no additional information. Additionally, your code will be executed twice. This is to ensure you have taken into account how file redirection and command execution works.
+#answer
+ls -l $HOME/CUT | cut -d: -s -f2 | cut -d' ' -f2 -s | cut -d. -f1-2 -s > $HOME/CUT/names
 
 
 | egrep "~"
