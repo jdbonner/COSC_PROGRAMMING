@@ -214,7 +214,7 @@ find -name \*.txt | grep -v ~.txt
 Copy all files in the $HOME/1123 directory, that end in ".txt", and omit files containing a tilde "~" character, to directory $HOME/CUT.
 
 Use only the find and cp commands. You will need to utilize the -exec option on find to accomplish this activity.
-
+-c
 The find command uses BOOLEAN "!" to designate that it does not want to find any files or directories that follows.
 #answer
 find $HOME/1123 -name *.txt ! -name *~* -exec cp {} $HOME/CUT \;
@@ -254,6 +254,7 @@ awk -F: '{print $NF}' fakepasswd
 awk -F: '($3 == 0) {print $1}' fakepasswd
 #
 awk -F: 'begin {OFS="@"} {print $1, $3}' fakepasswd
+################################CHALLENGES2###################################
 
 awk -F: 'begin {OFS=":"} {print $1, $3}' fakepasswd.txt
 cat /etc/passwd | awk -F: '($3 >= 150){print $0}'
@@ -317,7 +318,7 @@ dmesg | grep -i -E 'CPU|BIOS' | grep -iv -E 'usable|reserved' | awk -F] '{print 
 
 ################################ALIAS###################################
 alias vim = 'nano'
-
+| awk -F: '{print $2}'
 ################################GUIDE EXAMPLES###################################
 
 alias rm='rm -i'                    creates alias to confirm removal
@@ -361,6 +362,82 @@ sed -i -e 's/ANCHOVIES//g' pizaster.htm
 
 sed -i '/^#/d' /etc/hosts.allow
             removes all lines starting with "#" from file /etc/hosts.allow
+
+
+
+################################COMMAND SUBSTITUTION###################################
+#!/bin/bash
+A=$(find /usr/bin -name passwd)
+echo $A
+echo md5sum $A
+echo file $A
+
+
+
+
+
+
+
+
+################################GUIDE EXAMPLES###################################
+A=$(Command)            A=$(cat /etc/passwd)
+`Command`               `cat /etc/passwd
+
+
+A=value                 A=120
+B=value                 B=20
+expr $A - $B            =100  
+C=$(expr $A - $B)
+echo $C                 =100
+D=.mp3                  for x in $(cat songs); do sed -i "s/$/$D/"; done
+                        =appends .mp3 to the end of every song in file: songs
+
+
+
+
+
+begin {OFS=" "}
+
+
+dmesg | grep -i -E 'CPU|BIOS' | grep -iv -E 'usable|reserved' | awk -F] '{print $2}' 
+dmesg | grep -i -E 'CPU|BIOS' | grep -iv -E 'usable|reserved' | awk -F] 'begin {OFS=" "} {print $NF}' 
+dmesg | grep -i -E 'CPU|BIOS' | grep -iv -E 'usable|reserved' | awk -F] '{print $2}' | awk -F: '{print $2}'
+dmesg | grep -i -E 'CPU|BIOS' | grep -iv -E 'usable|reserved' | cut -c 16-
+
+
+################################CHALLENGES###################################
+#1
+Write a basic bash script that greps ONLY the IP addresses in the text file provided (named StoryHiddenIPs in the current directory); sort them uniquely by number of times they appear.
+
+It is not important to have a regular expression that only catches fully valid IP addresses. It is more important that you become familiar with creating and using regular expressions. 
+Below, there are some useful websites that you can use to visually see what your regular expression pattern is matching on.
+#answer
+grep -o "[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}" StoryHiddenIPs | sort | uniq -c | sort -nr
+#2
+Using ONLY the awk command, write a BASH one-liner script that extracts ONLY the names of all the system and user accounts that are not UIDs 0-3.
+Only display those that use /bin/bash as their default shell.
+The input file is named $HOME/passwd and is located in the current directory.
+Output the results to a file called $HOME/SED/names.txt
+#answer
+awk -F: '($3 > 3) && ($7 == "/bin/bash") {print $1}' $HOME/passwd > $HOME/SED/names.txt
+#3
+Find all dmesg kernel messages that contain CPU or BIOS (uppercase) in the string, but not usable or reserved (case-insensitive)
+Print only the msg itself, omitting the bracketed numerical expressions ie: [1.132775]
+#answer
+dmesg | grep -E 'CPU|BIOS' | grep -i -v -E 'usable|reserved' | cut -c 15-
+#4
+Write a Bash script using "Command Substitution" to replace all passwords, using openssl, from the file $HOME/PASS/shadow.txt with the MD5 encrypted password: Password1234, with salt: bad4u
+Output of this command should go to the screen/standard output.
+#answer
+#!/bin/bash
+A=$(openssl passwd -1 -salt bad4u Password1234)
+awk -F: -v "awk_var=$A" 'BEGIN {OFS=":"} {$2=awk_var} {print}' $HOME/PASS/shadow.txt
+#5
+Using ONLY sed, write all lines from $HOME/passwd into $HOME/PASS/passwd.txt that do not end with either /bin/sh or /bin/false.
+#answer
+sed -e '/\/bin\/sh/d' -e '/\/bin\/false/d' $HOME/passwd > $HOME/PASS/passwd.txt
+
+
 
 
 
