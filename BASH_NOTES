@@ -1,9 +1,11 @@
+'''
 #this is a place to put all of the bash notes
 ###############################HOMEWORK##################################
 http://10.50.26.116/challenges
 username: CplBonner
 passwordhint: DS3 favorite knight
-
+'''
+'''
 ################################RESOURCES###################################
 #student guide
 https://cted.cybbh.io/tech-college/pns/public/pns/latest/guides/bash_sg.html
@@ -12,8 +14,8 @@ ss64
 https://linuxhandbook.com/find-exec-command/
 https://phoenixnap.com/kb/bash-printf
 https://www.baeldung.com/linux/bash-single-vs-double-brackets#:~:text=The%20single%20bracket%20is%20a,brackets%20is%20generally%20more%20convenient.
-
-
+'''
+'''
 ################################COMMANDS###################################
 #manual for linux
 man
@@ -53,7 +55,8 @@ more
 head
 less
 tail
-
+'''
+'''
 ################################SEARCHING###################################
 
 #Finding things
@@ -111,22 +114,24 @@ find [path] [arguments] -exec [command] {} \;
 {} is a placeholder that is used to hold results given by the find command.
 \; says that for each found result, the [command] is executed. You need to escape the ; here and hence \;.
 There must be a space between {} and \;
-
+'''
+'''
 ################################PROCESSES###################################
 #processes
 ps -elf
 ps aux
 ps
 kill
-
+'''
+'''
 ################################CUT###################################
 
 #cut
 cat <file> | cut -d: -f1
 #-d is for delimiter. -f1 is field 1
 cut -d: -f1 -s
-
-
+'''
+'''
 ################################CHAINING OPERATORS###################################
 
 &     #bitwise AND
@@ -136,8 +141,8 @@ cut -d: -f1 -s
 |     #bitwise OR
 ^     #bitwise XOR
 ~     #bitwise complement
-
-
+'''
+'''
 ################################CHALLENGES1###################################
 #1
 Brace expansion is a mechanism by which arbitrary strings may be generated, for commands that will take multiple arguements. For the below examples, the first example is equivalent to the second command.
@@ -199,6 +204,8 @@ While this activity can be accomplished with only find, it can also be combined 
 #answer
 find -name \*.txt | grep -v ~.txt
 ################################END OF CHALLENGES###################################
+'''
+'''
 ################################CHALLENGES2###################################
 #1
 Copy all files in the $HOME/1123 directory, that end in ".txt", and omit files containing a tilde "~" character, to directory $HOME/CUT.
@@ -233,9 +240,15 @@ Omit the names filename from your output.
 NOTE: The output should only be the file names with no additional information. Additionally, your code will be executed twice. This is to ensure you have taken into account how file redirection and command execution works.
 #answer
 ls -l $HOME/CUT | cut -d: -s -f2 | cut -d' ' -f2 -s | cut -d. -f1-2 -s > $HOME/CUT/names
+'''
 
 
-| egrep "~"
+
+
+
+
+
+
 
 
 
