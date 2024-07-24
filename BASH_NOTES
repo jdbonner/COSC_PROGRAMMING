@@ -22,7 +22,7 @@ https://regex101.com/library
 #manual for linux
 man
 
-#creeate a file
+#create a file
 touch
 
 #create a directory
@@ -221,7 +221,7 @@ find $HOME/1123 -name *.txt ! -name *~* -exec cp {} $HOME/CUT \;
 #2
 Using ONLY the find command, find all empty files/directories in directory /var and print out ONLY the filename (not absolute path), and the inode number, separated by newlines.
 
-Tip: When using the man pages, it is better to focus your search then to visually scan 1000+ lines of text. Combining the output with the grep command, possibly with its -A, -B, or -C options, can help drive context driven searches of those manual pages.
+Tip: When using the man pages, it is better to focus your search then tofind visually scan 1000+ lines of text. Combining the output with the grep command, possibly with its -A, -B, or -C options, can help drive context driven searches of those manual pages.
 
 Example Output
 
@@ -437,6 +437,82 @@ Using ONLY sed, write all lines from $HOME/passwd into $HOME/PASS/passwd.txt tha
 #answer
 sed -e '/\/bin\/sh/d' -e '/\/bin\/false/d' $HOME/passwd > $HOME/PASS/passwd.txt
 
+
+################################TAR###################################
+#compresses file
+tar -czf
+#-c creates an archive
+#-z ???
+#-f specifies the filename
+
+#creating an uncompressed tar archive
+tar -cvf
+
+
+
+################################DAY 3###################################
+#!/bin/bash
+
+A=120
+B=20
+expr $A - $B
+C=$(expr $A - $B)
+echo $C
+
+#!/bin/bash
+
+contents=$(cat simple.txt)
+if [[ $contents == "tacos" ]]; then
+  echo "are good on tuesdays"
+elif [[ $contents == "costco is amazing" ]]; then
+  echo "and will save you money"
+elif [[ $contents == "chicken bake" ]]; then
+  echo "tasty but will make you fail ht/wt"
+else
+  echo "no tax at commissary"
+fi
+
+
+
+
+
+
+
+
+
+################################CHALLENGES###################################
+#1
+sing find, find all files under the $HOME directory with a .bin extension ONLY.
+Once the file(s) and their path(s) have been found, remove the file name from the absolute path output.
+Ensure there is no trailing / at the end of the directory path when outputting to standard output.
+You may need to sort the output depending on the command(s) you use.
+#answer
+find $HOME -name \*.bin | rev | cut -d/ --complement -f1 | rev | sort -u
+#2
+Write a script which will copy the last entry/line in the passwd-like file specified by the $1 positional parameter
+Modify the copied line to change:
+User name to the value specified by $2 positional parameter
+Used id and group id to the value specified by $3 positional parameter
+Home directory to a directory matching the user name specified by $2 positional parameter under the /home directory
+The default shell to `/bin/bash'
+Append the modified line to the end of the file
+#answer
+#!/bin/bash
+tail -n 1
+
+
+
+
+
+
+#!/bin/bash
+file=$1
+user_name=$2
+uid_gid=$3
+home='/home/$2'
+shell='/bin/bash'
+A=$(tail -n 1 $file)
+awk -f: -v "awk_user=$user_name" "awk_id=$uid_gid" "awk_home=$home" "awk_shell=$shell" 'BEGIN {OFS=":"} {$1=awk_user} {$3=awk_id} {$6=awk_home} {$7=awk_shell} {print $0}'
 
 
 
