@@ -575,6 +575,75 @@ tar -czvf file.zip file1 file2 file3
 tar -ctzf file.tar.gz
 
 
+################################PRACTICE TEST NOTES###################################
+#1
+sed -e "s/cat/dog/g" -e "s/Navy/Army/g" $infile > $outfile
+#2
+cat passwd | awk -F: '{print $1}'
+OR
+cut -d':' -f1 /etc/passwd
+#3
+cat passwd | sort -t : -nk 3 | awk -F: '{print $1}'
+OR
+sort -n -t: -k3 $filename | cut -d':' -f1
+#4
+find $dirname -type f | wc -l
+OR
+ls -1 $dirname | wc -l
+#5
+rm -r $dirdel
+#6
+function q1()
+{
+  #Valid Variables are:
+  newfile=$HOME/bash/bigdate
+  filedate='20200601''1730.00'
+  #Your code here
+touch $newfile
+touch -t $filedate $newfile
+}
+OR
+touch -t "$filedate"1730 $newfile
+#7
+function q1()
+{
+  #Valid Variables are:
+  fname=$1
+  #Your code here
+contents=$(cat tst.txt)
+if [[ $contents -lt 10 ]]; then
+  echo "single digit"
+elif [[ $contents -lt 100 ]]; then
+  echo "double digit"
+elif [[ $contents -lt 1000 ]]; then
+  echo "triple digit"
+else
+  echo "Error"
+  fi
+}
+OR
+cont='cat $fname'
+if [[ $cont -lt 10 ]] ; then
+echo single digit
+elif [[ $cont -lt 100 ]] ; then
+echo double digit
+elif [[ $cont -lt 1000 ]] ; then
+echo triple digit
+else 
+echo Error
+fi
+#8
+cat $src | grep -v $match > $dst
+#9
+pkill $procname
+OR
+killall $procname
+#10
+find $dirpath -type f -mtime -1 | sort
+
+
+
+
 
 
 
