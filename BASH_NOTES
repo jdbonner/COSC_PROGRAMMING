@@ -642,6 +642,7 @@ killall $procname
 find $dirpath -type f -mtime -1 | sort
 
 
+find / -iname '*.bin' -exec tar 06.gz {} -1
 
 
 
