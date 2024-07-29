@@ -1,0 +1,72 @@
+############################LOGGING IN###################################
+xfreerdp /u:student /v:10.50.40.8 -dynamic-resolution +glyph-cache +clipboard
+
+
+############################RESOURCES###################################
+https://cted.cybbh.io/tech-college/pns/public/pns/latest/guides/ps_sg.html
+
+
+############################DAY 1###################################
+#navigation and help
+get-help
+get-command -verb get
+verb then noun
+verb-noun
+get-command -noun process
+
+
+get-help *log*
+
+get-help get-process -online
+#gets the version of powershell
+get-pwsh -version
+#gets all the exe in a specified folder
+get-childitem -path c:\windows -filter *.exe -recurse -name
+
+############################PRACTICAL EXERCISE RUNNING CMDLETS###################################
+
+Display a list of running processes.
+get-process
+
+Display a list of all running processes that start with the letter "s".
+get-process -name s*
+
+Find the cmdlet and its purpose for the following aliases:
+
+gal
+get-alias #gets the aliases for the current session
+
+dir
+get-childitem # gets the items and child items in one or more specified locations
+
+echo
+write-output # writes the specified objects to the pipeline.
+
+?
+where-object #selects objects from a collection based on their property values
+
+%
+foreach-object # performs an operation against each item in a collection of input objects
+
+ft
+format-table #formats the output as a table
+
+Display a list of Windows Firewall Rules.
+get-netfirewallrule
+
+Create a new alias called "gh" for the cmdlet "Get-Help"
+new-alias -name gh -value get-help
+
+
+############################END###################################
+
+
+
+
+
+
+
+
+
+
+
