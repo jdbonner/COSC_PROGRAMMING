@@ -261,6 +261,14 @@ $employee3
 
 
 ############################END###################################
+############################LOOP###################################
+#getting all the local groups and outputting them in red with the local group members in plain text underneath
+foreach ($grp in (get-localgroup).name) {
+write-host "`n$grp" -foregroundcolor red
+'======================================='
+(get-localgroupmember -name $grp).name -replace("$env:computername\\",'')
+}
+
 
 
 
@@ -271,6 +279,7 @@ $employee3
 
 
 
+############################END###################################
 
 
 
