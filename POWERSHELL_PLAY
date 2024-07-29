@@ -8,7 +8,7 @@ $OutputBox.Size = New-Object System.Drawing.Size(100,100)
 $OutputBox.Location = new-object System.Drawing.Size(20,80)
 
 $Form = New-Object Windows.Forms.Form
-$Form.Text = "Posey's Example GUI"
+$Form.Text = "Example GUI"
 $Form.Width = 1000
 $Form.Height = 500
 $Form.BackColor="DarkRed"
