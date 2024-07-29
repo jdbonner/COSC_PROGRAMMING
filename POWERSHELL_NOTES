@@ -23,6 +23,52 @@ get-pwsh -version
 #gets all the exe in a specified folder
 get-childitem -path c:\windows -filter *.exe -recurse -name
 
+get-alias -definition get-childitem
+remove-item alias:<alias name>
+
+#get process but only show the process name column
+(get-process).processname
+
+#gets the process for notepad and then kills it
+(get-process notepad).kill()
+
+#gets the members of get process
+get-process | get-member
+
+#the properties of the members
+get-process | get-member -membertype properties
+
+#gets the services and sends it to a table that formats it into name and status
+get-service | format-table name, status
+
+#read everything and output it to name and size
+$cols = @{label="KB"; Expression = { [int]($_.Length/1KB) } }
+get-childitem | format-table name, $cols
+
+############################PRACTICAL EXERCISE FIND CMDLETS###################################
+Ensure that you have the latest copy of help by updating your help system.
+update-help
+
+Which cmdlets deal with the viewing/manipulating of processes?
+get-process
+
+Display a list of services installed on your local computer.
+get-service
+
+What cmdlets are used to write or output objects or text to the screen?
+write-output
+
+What cmdlets can be used to create, modify, list, and delete variables?
+get-variable
+
+What cmdlet can be used, other than Get-Help, to find and list other cmdlets?
+man
+
+Find the cmdlet that is used to prompt the user for input.
+read-host
+
+############################END###################################
+
 ############################PRACTICAL EXERCISE RUNNING CMDLETS###################################
 
 Display a list of running processes.
@@ -32,6 +78,9 @@ Display a list of all running processes that start with the letter "s".
 get-process -name s*
 
 Find the cmdlet and its purpose for the following aliases:
+#instructor solution
+$array = "gal", "dir", "echo", "?", "%", "ft"
+$array | foreach-object{get-alias $_}
 
 gal
 get-alias #gets the aliases for the current session
@@ -63,6 +112,41 @@ new-alias -name gh -value get-help
 
 
 
+############################PRACTICAL EXERCISE VARIABLES###################################
+
+Create a variable called "var1" that holds a random number between 25-50.
+$var1 = 25..50
+
+Create a variable called "var2" that holds a random number between 1-10.
+$var2 = 1..10
+
+Create a variable called "sum" that holds the sum of var1 and var2.
+$sum = $var1 + $var2
+
+Create a variable called "sub" that holds the difference of var1 and var2.
+$sub = $var1 - $var2
+
+Create a variable called "prod" that holds the product of var1 and var2.
+$prod = $var1 * $var2
+
+Create a variable called "quo" that holds the quotient of var1 and var2.
+$quo = $var1 / $var2
+
+Replace the variables in text with their values in the following format:
+
+"var1" + "var2" = 45
+
+Replace the variables in text with their values in the following format:
+
+"var1" - "var2" = 27
+
+Replace the variables in text with their values in the following format:
+
+"var1" * "var2" = 324
+
+Replace the variables in text with their values in the following format:
+
+"var1" / "var2" = 4
 
 
 
@@ -70,3 +154,13 @@ new-alias -name gh -value get-help
 
 
 
+############################END###################################
+
+
+
+
+
+
+
+
+############################END###################################
