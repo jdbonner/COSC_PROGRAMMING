@@ -240,7 +240,22 @@ write-output $revarray
 ############################END###################################
 
 ############################PRACTICAL EXERCISE ARRAYS & HASH TABLES###################################
+$employee1 = [ordered]@{ First = "Mary"; Last = "HOPPER"; ID = 001; Job = "Software Lead"}
+$employee2 = [ordered]@{ First = "John"; Last = "Williams"; ID = 002; Job = "Web Developer"}
+$employee3 = [ordered]@{ First = "Alex"; Last = "Moran"; ID = 003; Job = "Software Developer"}
 
+
+$employee1.username = "mhopper001"
+$employee2.username = "jwilliams002"
+$employee3.username = "amoran003"
+$employee1.Status = "Management"
+$employee2.Status = "Intermediate"
+$employee3.Status = "Entry Level"
+
+
+$employee1
+$employee2
+$employee3
 
 
 
