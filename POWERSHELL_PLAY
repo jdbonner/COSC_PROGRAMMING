@@ -1,0 +1,18 @@
+Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+
+$OutputBox = New-Object System.Windows.Forms.textbox
+$OutputBox.Text = "This is text in a box"
+$OutputBox.Multiline = $False
+$OutputBox.Size = New-Object System.Drawing.Size(100,100)
+$OutputBox.Location = new-object System.Drawing.Size(20,80)
+
+$Form = New-Object Windows.Forms.Form
+$Form.Text = "Posey's Example GUI"
+$Form.Width = 1000
+$Form.Height = 500
+$Form.BackColor="DarkRed"
+
+$Form.Controls.add($OutputBox)
+$Form.Add_Shown({$Form.Activate()})
+$Form.ShowDialog()
