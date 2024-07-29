@@ -4,9 +4,21 @@ xfreerdp /u:student /v:10.50.40.8 -dynamic-resolution +glyph-cache +clipboard
 
 ############################RESOURCES###################################
 https://cted.cybbh.io/tech-college/pns/public/pns/latest/guides/ps_sg.html
+https://www.red-gate.com/simple-talk/sysadmin/powershell/when-to-quote-in-powershell/
+https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_hash_tables?view=powershell-7.4
+https://www.tutorialspoint.com/powershell/powershell_brackets.htm
+
+
 
 
 ############################DAY 1###################################
+
+############################COMMANDS AND NOTES###################################
+
+#there is no word wrap
+#difference between single ' and double " quotes: double quotes take variables and single quotes do not and are literal.
+# -f is the same as -format
+
 #navigation and help
 get-help
 get-command -verb get
@@ -44,6 +56,58 @@ get-service | format-table name, status
 #read everything and output it to name and size
 $cols = @{label="KB"; Expression = { [int]($_.Length/1KB) } }
 get-childitem | format-table name, $cols
+
+
+#gets all of the services that are running
+get-service | where-object {$_.status -eq "running"}
+
+
+#gets all of the services that are stopped
+get-service | where-object -property status -eq 'stopped'
+############################END###################################
+
+
+############################FUNCTIONS###################################
+#using a function and sorting the output
+function fruit-host {
+write-host "apple"
+write-host "orange"
+write-host "banana"
+write-host "pear"
+}
+function fruit-output {
+write-host "apple"
+write-host "orange"
+write-host "banana"
+write-host "pear"
+}
+fruit-host | sort
+fruit-output | sort
+
+############################END###################################
+############################VARIABLES###################################
+#declairing variable
+$x = 10
+get-variable x
+get-childitem variable:x
+
+#declairing multiple variables
+$x, $y, $z = "this", "that", "third"
+test-path variable:x
+
+#removing a variable
+remove-variable x
+del variable:x
+
+#double quotes takes a variable while single does not and takes text as literal.
+$var1 = "Jon"$var1range = 25..50
+$var1 = get-random in $var1range
+write-host "Hello $var1"
+write-host 'hello $var1'
+
+
+
+############################END###################################
 
 ############################PRACTICAL EXERCISE FIND CMDLETS###################################
 Ensure that you have the latest copy of help by updating your help system.
@@ -114,22 +178,24 @@ new-alias -name gh -value get-help
 
 ############################PRACTICAL EXERCISE VARIABLES###################################
 
-Create a variable called "var1" that holds a random number between 25-50.
-$var1 = 25..50
+#Create a variable called "var1" that holds a random number between 25-50.
+$var1range = 25..50
+$var1 = get-random in $var1range
 
-Create a variable called "var2" that holds a random number between 1-10.
-$var2 = 1..10
+#Create a variable called "var2" that holds a random number between 1-10.
+$var2range = 1..10
+$var2 = get-random in $var2range
 
-Create a variable called "sum" that holds the sum of var1 and var2.
+#Create a variable called "sum" that holds the sum of var1 and var2.
 $sum = $var1 + $var2
 
-Create a variable called "sub" that holds the difference of var1 and var2.
+#Create a variable called "sub" that holds the difference of var1 and var2.
 $sub = $var1 - $var2
 
-Create a variable called "prod" that holds the product of var1 and var2.
+#Create a variable called "prod" that holds the product of var1 and var2.
 $prod = $var1 * $var2
 
-Create a variable called "quo" that holds the quotient of var1 and var2.
+#Create a variable called "quo" that holds the quotient of var1 and var2.
 $quo = $var1 / $var2
 
 Replace the variables in text with their values in the following format:
@@ -149,8 +215,37 @@ Replace the variables in text with their values in the following format:
 "var1" / "var2" = 4
 
 
+#solution
+$var1 = get-random -minimum 25 -maximum 50
+$var2 = get-random -minimum 1 -maximum 10
+
+#then make and call each variable for output
+
+#output
+"$var1 + $var2 = $sum"
+"{0} + {1} = {2}" -f $var1, $var2, $sum
+#-f is same as -format
+
+############################END###################################
+############################PRACTICAL EXERCISE REVERSE ARRAYS###################################
+$revarray = -3..15
+$reverse = $revarray[($revarrray.length-1)..0]
+$reverse
+
+$revarray = -3..15
+$reverse = $revarray
+[array]::reverse($reverse)
+write-output $revarray
+
+############################END###################################
+
+############################PRACTICAL EXERCISE ARRAYS & HASH TABLES###################################
 
 
+
+
+
+############################END###################################
 
 
 
@@ -163,4 +258,9 @@ Replace the variables in text with their values in the following format:
 
 
 
-############################END###################################
+
+
+
+
+
+
