@@ -309,7 +309,7 @@ get-process | select-object -expandproperty name
 ############################END############################
 ############################PRACTICAL EXERCISE THE PIPELINE############################
 #Display the start time of the earliest and latest running processes
-get-process | where-object starttime | select name,starttime | sort-object starttime | select-object -first 2 -last 1
+get-process | where-object starttime | select name,starttime | sort-object starttime | select-object -first 1 -last 1
 
 #Identify a cmdlet that returns the current date and time then using this cmdlet and Select-object, display only the current day of the week
 get-date -format "dddd"
