@@ -17,9 +17,18 @@ $Form.Controls.add($OutputBox)
 $Form.Add_Shown({$Form.Activate()})
 $Form.ShowDialog()
 
-if ( $condition )
+
+$control = false
+while (control != true) 
 {
-    Write-Output "The condition was true"
+if ( $OutputBox == "mission 1" )
+{
+    & $mission1
+}
+elseif ( $Outputbox == "exit" )
+{
+    $control = True
+}
 }
 
 ###########################################################################3
