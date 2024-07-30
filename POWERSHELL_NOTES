@@ -346,12 +346,33 @@ get-process | where-object processname -ne "Idle" | sort-object starttime | sele
 
 ############################END############################
 
-############################SECTION############################
+############################MEASURE-OBJECT############################
+
+get-childitem | measure-object length
+
+$array = 1,2,3,4,5
+$sum = 0
+$array | foreach-object {$sum += $_}
+$sum
+
+
+############################END############################
+############################COMPARE-OBJECT############################
+'a bunch of text here' > testtext.txt
+$before = get-childitem
+
+'42' > testtext.txt
+$after = get-childitem
+
+compare-object $before $after -property length, name
 
 ############################END############################
 ############################SECTION############################
 
 ############################END############################
+
+
+
 
 ############################################################END############################################################
 
