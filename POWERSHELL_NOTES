@@ -1,4 +1,3 @@
-# Logging in
 ############################LOGGING IN###################################
 xfreerdp /u:student /v:10.50.40.8 -dynamic-resolution +glyph-cache +clipboard
 
@@ -325,9 +324,15 @@ get-hotfix | sort-object -property installedon | select installedon,hotfixid
 get-hotfix | sort-object -property description | select description,hotfixid,installedon
 
 ############################END############################
-############################SECTION############################
+############################WHERE-OBJECT############################
+get-service | where-object{$_.status -eq 'running'}
+
+get-childitem *.txt| where-object{$_.length -gt 100}
+
+get-process | where-object {$_.company -like 'micro*'} | format-table name,description,company
 
 ############################END############################
+
 
 
 
