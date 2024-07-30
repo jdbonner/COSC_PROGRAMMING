@@ -350,12 +350,6 @@ get-process | where-object processname -ne "Idle" | sort-object starttime | sele
 
 get-childitem | measure-object length
 
-$array = 1,2,3,4,5
-$sum = 0
-$array | foreach-object {$sum += $_}
-$sum
-
-
 ############################END############################
 ############################COMPARE-OBJECT############################
 'a bunch of text here' > testtext.txt
@@ -367,10 +361,89 @@ $after = get-childitem
 compare-object $before $after -property length, name
 
 ############################END############################
+############################FOREACH-OBJECT############################
+$array = 1,2,3,4,5
+$sum = 0
+$array | foreach-object {$sum += $_}
+$sum
+
+############################END############################
+############################MAKING AND ADDING TO AN OBJECT############################
+$MyTruck = new-object object
+add-member -membertype noteproperty -name color -value white -inputobject $MyTruck
+
+#shortened syntax
+add-member -me noteproperty -in $Mytruck -na make -value Toyotas
+
+add-member -inputobject $mytruck noteproperty model "Tundra sr5"
+
+add-member -inputobject $mytruck -membertype noteproperty -name make -value Toyotas
+
+add-member -inputobject $mytruck
+scriptmethod accelerate { "skinny pedal on the right" }
+
+$mytruck | add-member scriptmethod park { "finding a spot is impossible" }
+$mytruck.park()
+############################END############################
+############################COMPARISON OPERATORS############################
+#equality
+-eq, -ceq    #Equals
+-ne, -cne    #Not Equal
+-gt, -cgt    #Greater Than
+-lt, -clt    #Less Than
+-ge, -cgt    #Greater Than or Equal To
+-le, -cle    #Less Than or Equal To
+
+#matching
+-like, -clike                  #String matches wildcard pattern
+-notlike, -cnotlike            #String does not match wildcard pattern
+-match, cmatch                 #String matches regex pattern
+-notmatch, -cnotmatch          #String does not match regex pattern
+
+#replacement
+-replace, -creplace            #replaces strings matching a regex pattern
+
+#containment
+-contains, -ccontains          #Contains (used for a collection of items)
+-notcontains, -cnotcontains    #Collection does not contain a value
+-in                            #Returns true when value is contained within a collection
+-notin                         #Value is not in a collection
+
+#type
+-is                            #Returns true if both objects are the same type
+-isnot                         #The objects are not the same type
+
+############################END############################
+############################COMPARISON OPERATORS EXAMPLES############################
+$fruit = 'mango' 'watermelon', 'tomatoes'
+$fruit -contains 'crayons'
+
+$text = "your account username is ACE4495"
+$pattern = '([A-F]{3}(\d{4})'
+$text -match $pattern
+
+############################END############################
+############################FLOW CONTROL############################
+$x = read-host -prompt 'input number 1 to 5'
+if ($x -eq 5) {
+write-host "bob"
+}
+elseif ($x -eq 4) {
+write-host "sue"
+}
+elseif ($x -eq 2) {
+write-host "tom"
+}
+elseif ($x -eq 1) {
+write-host "mary"
+}
+else {
+write-host "who am i?"
+}
+############################END############################
 ############################SECTION############################
 
 ############################END############################
-
 
 
 
