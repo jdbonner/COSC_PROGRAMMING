@@ -332,10 +332,26 @@ get-childitem *.txt| where-object{$_.length -gt 100}
 
 get-process | where-object {$_.company -like 'micro*'} | format-table name,description,company
 
+get-process | where-object {$_.company -notlike 'powershell*'} 
+
+get-process | where-object processname -ne "Idle" | sort-object starttime | select-object -last 10 | format-table processname, starttime
+
+get-process | where-object processname -ne "Idle" | sort-object starttime | select-object -last 10 | format-table processname, starttime
+
+############################END############################
+############################GET-UNIQUE############################
+
+2,5,3,3,2,5,6,6,4,3,2,1,3,5,7,9,7,6 | sort-object | get-unique
+
+
 ############################END############################
 
+############################SECTION############################
 
+############################END############################
+############################SECTION############################
 
+############################END############################
 
 ############################################################END############################################################
 
