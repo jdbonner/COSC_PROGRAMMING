@@ -367,6 +367,22 @@ $sum = 0
 $array | foreach-object {$sum += $_}
 $sum
 
+get-process | select-object -first 10 | foreach-object {$_.name} | foreach-object {$_.toupper()}
+
+$teams = <list of teams>
+foreach($teams in $teams){"sportsball $teams"}
+
+$var = ""
+while($var -ne "MUHRINS"){
+$var = read-host "which branch of the military is the best?"
+}
+
+$num = 6
+do {
+$num
+$num++
+}while($num -gt 5 -and $num -lt 40)
+
 ############################END############################
 ############################MAKING AND ADDING TO AN OBJECT############################
 $MyTruck = new-object object
