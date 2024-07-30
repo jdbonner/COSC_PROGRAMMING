@@ -17,6 +17,10 @@ $Form.Controls.add($OutputBox)
 $Form.Add_Shown({$Form.Activate()})
 $Form.ShowDialog()
 
+if ( $condition )
+{
+    Write-Output "The condition was true"
+}
 
 ###########################################################################3
 
