@@ -18,6 +18,8 @@ https://www.tutorialspoint.com/powershell/powershell_brackets.htm
 #there is no word wrap
 #difference between single ' and double " quotes: double quotes take variables and single quotes do not and are literal.
 # -f is the same as -format
+#to make an empty hash table use @{}
+#to make an empty array use @()
 
 #navigation and help
 get-help
@@ -658,9 +660,49 @@ Function Get-LongestName($state1, $state2, $state3){
     End {}
 }
 
+Function Get-LongestName(){
+    Begin {
+    $state1 = read-host "enter a state"
+    $state2 = read-host "enter a state"
+    $state3 = read-host "enter a state"
+
+    $states = $state1, $state2, $state3
+    $sorted = $states | sort-object -property length -descending
+    }
+    Process {
+    foreach($state in $sorted){ $state + ": " + $state.length }
+    
+    }
+    End {}
+}
+
+#instructor solution
+
+function get-longestname{
+  begin{
+    $count = 0
+    $states = @()
+  }
+  process{
+    while($count -lt 3) {
+      $usr = read-host "enter a us state"
+      $states += $usr
+      $count += 1
+    }
+  }
+  end{
+    $list = $states | sort -property length -descending
+    foreach($state in $list){
+    "$state`: " + $state.length
+    }
+  }
+}
+############################END############################
+############################SECTION############################
 
 
 ############################END############################
+
 
 ############################################################END############################################################
 
