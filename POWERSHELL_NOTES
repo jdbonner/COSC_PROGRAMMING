@@ -698,7 +698,37 @@ function get-longestname{
   }
 }
 ############################END############################
-############################SECTION############################
+############################PRACTICAL EXERCISE REGEX############################
+Create a function that extracts your current IP, Subnet and Gateway and outputs them in the following format:
+PS> Get-netinfo
+IP: 192.168.0.1
+Subnet: 255.255.255.0
+Gateway: 192.168.1.1
+
+
+$ip = ipconfig | ? { $_ -match 'Ipv4.*: ((\d{1,3}\.){3}\d{1,3})' }| select @{n="IPv4";e={$Matches[1]}}
+
+
+Function Get-netinfo(){
+    Begin {
+    
+    $pattern = '.*?((\d{1,3}\.){3}\d{1,3})'
+    $netinfo = ipconfig
+    
+    $ip = $netinfo -match "IPV4$pattern" | foreach-object{if ($_ -match $pattern) {$matches[1]}}
+    $subnet = $netinfo -match "Subnet$pattern" | foreach-object{if ($_ -match $pattern) {$matches[1]}}
+    $gw = $netinfo -match "Gateway$pattern" | foreach-object{if ($_ -match $pattern) {$matches[1]}}
+    }
+    Process {
+
+    }
+    End {
+    "IP: {0}" -f $ip
+    "Subnet: {0}" -f $subnet
+    "Gateway: {0}" -f $gw
+    }
+}
+
 
 
 ############################END############################
