@@ -348,7 +348,10 @@ get-process | where-object processname -ne "Idle" | sort-object starttime | sele
 
 ############################MEASURE-OBJECT############################
 
-get-childitem | measure-object length
+get-childitem | measure-object length              #measures the length
+1,2,3,4,5 | measure-object -average                #gets the average of the array
+(1,2,3,4,5 | measure-object -average).average      #returns just the average section
+(1,2,3,4,5 | measure-object -average).gettype()    #returns the type of output
 
 ############################END############################
 ############################COMPARE-OBJECT############################
@@ -566,16 +569,62 @@ format-table -property id, name, startime, totalprocessortime, virtualmemorysize
 
 
 ############################END############################
+############################SQUARE ROOT############################
+#square root 
+[math]:::sqrt(64)
+############################END############################
+############################POWER############################
+#how to get the power of something
+[math]::pow(6,2)
+############################END############################
+############################LIKE############################
+#checks to see if strings are similar. is case insensitive by default
+-like
+#checks to see if strings are similar case sensitive
+-clike
+#checks to see if things are similiar case insensitive
+-ilike
+
+#examples
+'msedge' -like '*MS*'
+'msedge' -clike '*MS*'
+'msedge' -match '^m.*$'
+
+############################END############################
+
+
+
 
 ############################################################END############################################################
+############################################################DAY 3#############################################################
+############################USEFUL FUNCTION STUFF############################
+# "elements provided on the pipeline"
+function print-psitem{
+  being {}
+  process {foreach($i in $psitem) {$i}}
+  end {}
+}
+function Print-Input {
+    foreach($i in $input){$i}
+}
 
+function Get-Sum{
+  Begin {$sum = 0}
+  Process {$sum += $_; $_}
+  End {$sum}
+}
+############################END############################
+
+
+############################################################END############################################################
 
 
 
 ############################SECTION############################
 ############################END############################
 
-
+############################################################DAY #############################################################
+############################################################END############################################################
 
 
 
