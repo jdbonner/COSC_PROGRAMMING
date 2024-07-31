@@ -614,7 +614,53 @@ function Get-Sum{
   End {$sum}
 }
 ############################END############################
+############################PRACTICAL EXERCISE ADVANCED FUNCTIONS############################
+#Create an advanced function using Begin, Process, and End, that takes two(2) arguments. 
+#The first argument being an array of at least ten(10) integers and the second argument being a single integer. 
+#Search the array argument for every occurrence of the single integer argument then return the sum of all elements 
+#in the array excluding every occurrence of the single integer argument.
 
+function get-multisum($numbers, $number){
+  
+  Begin {$numbers = $numbers | where-object{$_ -ne $number}}
+  Process {foreach($i in $numbers){$sum += $i}}
+  End {$sum}
+}
+
+get-multisum @(1,2,3,4,5,6,7,8,9,10) 5
+
+#instructor solution
+function Get-Multisum([array]$array,[int]$number){
+  Begin{$sum = 0}
+  Process{
+    foreach($num in $array){
+    if($num -eq $number){
+      continue
+    }
+    $sum += $num
+  }
+  }
+  End{$sum}
+}
+
+
+#Create an advanced function using Begin, Process, End, that prompts the user to enter the names of three(3) U.S. 
+#States then returns the names of the states in the order of longest name to shortest name and the amount of characters in each name.
+
+Function Get-LongestName($state1, $state2, $state3){
+    Begin {
+    $states = $state1, $state2, $state3
+    $sorted = $states | sort-object -property length -descending
+    }
+    Process {
+    foreach($state in $sorted){ $state + ": " + $state.length }
+    }
+    End {}
+}
+
+
+
+############################END############################
 
 ############################################################END############################################################
 
